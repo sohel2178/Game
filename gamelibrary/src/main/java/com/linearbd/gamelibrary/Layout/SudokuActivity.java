@@ -31,6 +31,18 @@ public class SudokuActivity extends AppCompatActivity implements MyListener,Comp
         controllerContainer = (FrameLayout) findViewById(R.id.controller_container);
         frameLayout.addView(sudokuView);
         controllerContainer.addView(controlView);
+
+    }
+
+    private void startNewGame(){
+        frameLayout.removeAllViews();
+        controllerContainer.removeAllViews();
+        sudokuView = new SudokuView(this);
+        sudokuView.setCompleteListener(this);
+        controlView = new ControlView(this);
+        controlView.setListener(this);
+        frameLayout.addView(sudokuView);
+        controllerContainer.addView(controlView);
     }
 
     @Override
@@ -65,6 +77,7 @@ public class SudokuActivity extends AppCompatActivity implements MyListener,Comp
                         // if this button is clicked, close
                         // current activity
                         //MainActivity.this.finish();
+                        startNewGame();
                     }
                 })
                 .setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -72,6 +85,8 @@ public class SudokuActivity extends AppCompatActivity implements MyListener,Comp
                         // if this button is clicked, just close
                         // the dialog box and do nothing
                         dialog.cancel();
+
+                        SudokuActivity.this.finish();
                     }
                 });
 
