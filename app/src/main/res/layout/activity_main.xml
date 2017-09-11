@@ -13,4 +13,12 @@
         android:text="sudoku"
         android:id="@+id/sudoku"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/sudoku"
+        android:text="Clock"
+        android:id="@+id/clock"/>
+
 </RelativeLayout>
